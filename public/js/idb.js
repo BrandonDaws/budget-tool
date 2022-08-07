@@ -14,7 +14,8 @@ request.onsuccess = function(event) {
     db = event.target.result;
   
     if (navigator.onLine) {
-      // function goes here 
+      // function goes here
+      updateBudget(); 
     }
   };
   
@@ -23,7 +24,10 @@ request.onsuccess = function(event) {
     console.log(event.target.errorCode);
   };
 
+
+  //attempts to submit transaction if no internet connection
   function saveTransaction(saved){
+    //new transaction with database if 
     const transaction = db.transaction(['new_budget'], 'readwrite');
     const transactionObjStore = transaction.objectStore('new_budget');
 
